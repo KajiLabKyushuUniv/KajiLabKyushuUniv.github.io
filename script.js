@@ -283,4 +283,15 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }, 2000);
     }
+
+    // ニュースの「すべてのニュースを見る」ボタン
+    const loadMoreNewsBtn = document.getElementById('loadMoreNews');
+    const olderNews = document.getElementById('olderNews');
+    
+    if (loadMoreNewsBtn && olderNews) {
+        loadMoreNewsBtn.addEventListener('click', function() {
+            olderNews.classList.toggle('hidden');
+            this.textContent = olderNews.classList.contains('hidden') ? 'すべてのニュースを見る →' : 'ニュースを閉じる ←';
+        });
+    }
 });

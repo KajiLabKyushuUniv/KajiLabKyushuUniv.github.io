@@ -29,6 +29,10 @@
     --shadow-small: 0 2px 5px rgba(0, 0, 0, 0.1);
     --shadow-medium: 0 5px 15px rgba(0, 0, 0, 0.1);
     --shadow-large: 0 10px 25px rgba(0, 0, 0, 0.15);
+
+    /* マイクロ流体/化学スタイルのデザイン要素 */
+    --microfluid-pattern: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%237f1146' fill-opacity='0.1' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
+    --chemical-wave: linear-gradient(90deg, transparent, rgba(127, 17, 70, 0.1), transparent);
 }
 
 /* リセットとベーススタイル */
@@ -349,12 +353,8 @@ img {
     height: 100vh;
     display: flex;
     align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 0 1rem;
+    padding: 0;
     overflow: hidden;
-    background-color: var(--dark-color);
-    color: var(--white);
 }
 
 .hero-bg {
@@ -363,12 +363,14 @@ img {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('images/hero-background.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    opacity: 0.6;
-    z-index: 0;
+    z-index: 1;
+}
+
+.hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
 }
 
 .hero-bg::after {
@@ -378,13 +380,21 @@ img {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7));
+    background: linear-gradient(90deg, 
+        rgba(0, 0, 0, 0.8) 0%,
+        rgba(0, 0, 0, 0.6) 30%,
+        rgba(0, 0, 0, 0.4) 60%,
+        rgba(0, 0, 0, 0) 100%
+    );
 }
 
 .hero-content {
     position: relative;
-    z-index: 1;
-    max-width: 800px;
+    z-index: 2;
+    max-width: 50%;
+    padding-left: 5rem;
+    text-align: left;
+    color: var(--white);
 }
 
 .hero h1 {
@@ -413,13 +423,10 @@ img {
 .hero-description {
     margin-bottom: 2.5rem;
     max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
 }
 
 .hero-buttons {
     display: flex;
-    justify-content: center;
     gap: 1.5rem;
     margin-top: 2.5rem;
 }
@@ -518,18 +525,36 @@ img {
 }
 
 .research-card {
-    background-color: var(--white);
+    position: relative;
+    overflow: hidden;
+    border: none;
+    background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.5) 100%);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     padding: 2.5rem;
     border-radius: 8px;
     box-shadow: var(--shadow-medium);
     transition: all var(--transition-medium);
     border-top: 5px solid transparent;
+    background-image: var(--microfluid-pattern);
+    background-size: 20px 20px;
+    position: relative;
 }
 
-.research-card:hover {
-    transform: translateY(-10px);
-    box-shadow: var(--shadow-large);
-    border-top-color: var(--primary-color);
+.research-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent 0%, rgba(255,255,255,0.1) 100%);
+    transform: translateY(100%);
+    transition: transform 0.6s ease;
+}
+
+.research-card:hover::before {
+    transform: translateY(0);
 }
 
 .research-icon {
@@ -627,6 +652,10 @@ img {
     opacity: 0;
 }
 
+.welcome-image img {
+    filter: none;
+}
+
 /* ===== 最新ニュースセクション ===== */
 .news-section {
     padding: 6rem 0;
@@ -689,98 +718,174 @@ img {
 
 /* ===== 年間行事セクション ===== */
 .schedule-section {
-    padding: 6rem 0;
+    background-color: var(--color-background);
+    padding: 4rem 0;
 }
 
 .schedule-layout {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: center;
-}
-
-.schedule-calendar {
-    padding-right: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
 }
 
 .timeline {
     position: relative;
     padding: 2rem 0;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1000px;
 }
 
 .timeline::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 15px;
-    width: 2px;
-    height: 100%;
-    background-color: var(--light-gray);
+    left: 0;
+    top: 50%;
+    width: 100%;
+    height: 2px;
+    background: var(--primary-color);
+    transform: translateY(-50%);
+}
+
+.timeline-items {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
 }
 
 .timeline-item {
     position: relative;
-    padding-left: 40px;
-    margin-bottom: 2rem;
+    width: 120px;
+    text-align: center;
 }
 
 .timeline-dot {
     position: absolute;
-    top: 5px;
-    left: 9px;
+    left: 50%;
+    top: 0;
     width: 14px;
     height: 14px;
+    background: var(--primary-color);
     border-radius: 50%;
-    background-color: var(--primary-color);
+    transform: translate(-50%, -50%);
     z-index: 1;
 }
 
 .timeline-date {
-    font-weight: 700;
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-weight: bold;
     color: var(--primary-color);
-    margin-bottom: 0.5rem;
+    white-space: nowrap;
 }
 
 .timeline-content {
-    background-color: var(--white);
-    padding: 1.5rem;
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    padding: 1rem;
     border-radius: 8px;
-    box-shadow: var(--shadow-small);
-    transition: all var(--transition-fast);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 200px;
 }
 
-.timeline-item:hover .timeline-content {
-    transform: translateX(10px);
-    box-shadow: var(--shadow-medium);
+.timeline-content h3 {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
 }
 
-.schedule-calendar .btn {
-    margin-top: 2rem;
+.timeline-content .en-text {
+    font-size: 0.8rem;
 }
 
 .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 1rem;
-    height: 100%;
+    margin-top: 3rem;
 }
 
 .gallery-item {
+    position: relative;
     overflow: hidden;
     border-radius: 8px;
-    box-shadow: var(--shadow-small);
+    aspect-ratio: 16/9;
 }
 
 .gallery-image {
-    transition: transform var(--transition-medium);
-    object-fit: cover;
     width: 100%;
     height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
 }
 
 .gallery-item:hover .gallery-image {
-    transform: scale(1.1);
+    transform: scale(1.05);
+}
+
+.gallery-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 0.5rem;
+    font-size: 0.9rem;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover .gallery-caption {
+    transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+    .timeline-items {
+        flex-direction: column;
+        align-items: flex-start;
+        padding-left: 2rem;
+    }
+
+    .timeline::before {
+        left: 0;
+        top: 0;
+        width: 2px;
+        height: 100%;
+        transform: none;
+    }
+
+    .timeline-item {
+        width: 100%;
+        margin-bottom: 2rem;
+    }
+
+    .timeline-dot {
+        left: -2rem;
+        top: 50%;
+    }
+
+    .timeline-date {
+        top: 50%;
+        left: -4rem;
+        transform: translateY(-50%);
+    }
+
+    .timeline-content {
+        position: relative;
+        top: 0;
+        left: 0;
+        transform: none;
+        width: 100%;
+    }
+
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 /* ===== 研究成果の動的表示セクション ===== */
@@ -1064,6 +1169,7 @@ img {
     transition: all var(--transition-fast);
     z-index: 99;
     box-shadow: var(--shadow-medium);
+    cursor: pointer;
 }
 
 .back-to-top:hover {
@@ -1074,6 +1180,19 @@ img {
 .back-to-top.active {
     opacity: 1;
     visibility: visible;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
 }
 
 /* ===== レスポンシブデザイン ===== */
@@ -1082,12 +1201,17 @@ img {
         font-size: 15px;
     }
     
-    .hero h1 {
-        font-size: 3.5rem;
+    .hero-bg::after {
+        background: linear-gradient(0deg, 
+            rgba(0, 0, 0, 0.8) 0%,
+            rgba(0, 0, 0, 0.6) 100%
+        );
     }
     
-    .hero-subtitle {
-        font-size: 1.5rem;
+    .hero-content {
+        max-width: 100%;
+        padding: 0 2rem;
+        text-align: center;
     }
     
     .welcome-content,
@@ -1536,5 +1660,295 @@ img {
     
     .staff-section .members-grid {
         grid-template-columns: 1fr;
+    }
+}
+
+/* マイクロ・ナノスケールのパターン */
+.micro-nano-pattern {
+    background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.1' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
+    background-size: 20px 20px;
+}
+
+/* 電気化学的な波形のアニメーション */
+@keyframes electrochemical-wave {
+    0% {
+        transform: translateX(0) scaleY(1);
+    }
+    50% {
+        transform: translateX(50%) scaleY(1.5);
+    }
+    100% {
+        transform: translateX(100%) scaleY(1);
+    }
+}
+
+.wave-animation {
+    position: relative;
+    overflow: hidden;
+}
+
+.wave-animation::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    animation: electrochemical-wave 3s infinite linear;
+}
+
+/* マイクロ・ナノスケールのパターンの動き */
+@keyframes micro-nano-movement {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 20px 20px;
+    }
+}
+
+.micro-nano-movement {
+    background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.1' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
+    background-size: 20px 20px;
+    animation: micro-nano-movement 10s infinite linear;
+}
+
+/* ニュースセクションのスタイル */
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.news-card {
+    background: var(--color-background);
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.news-card:hover {
+    transform: translateY(-5px);
+}
+
+.news-date {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.news-date .day {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--color-primary);
+}
+
+.news-date .month-year {
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+}
+
+#olderNews {
+    display: none;
+}
+
+#olderNews.visible {
+    display: grid;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* メンバー募集セクションのスタイル */
+.recruitment-section {
+    background: linear-gradient(135deg, var(--color-background) 0%, var(--color-background-alt) 100%);
+    padding: 4rem 0;
+}
+
+.recruitment-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: center;
+}
+
+.recruitment-text ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 1rem 0;
+}
+
+.recruitment-text li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.recruitment-text li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--color-primary);
+}
+
+.recruitment-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes wave {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+@keyframes flow {
+    0% {
+        background-position: 0% 0%;
+    }
+    100% {
+        background-position: 0% 100%;
+    }
+}
+
+/* 科学元素装饰 */
+.science-pattern {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 1px 1px, var(--primary-color) 1px, transparent 0),
+        linear-gradient(45deg, transparent 0%, transparent 50%, var(--primary-color) 50%, var(--primary-color) 51%, transparent 51%, transparent 100%);
+    background-size: 20px 20px, 10px 10px;
+    opacity: 0.05;
+    pointer-events: none;
+}
+
+/* 分子动画效果 */
+.molecule-animation {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at center, var(--primary-color) 2px, transparent 2px),
+        radial-gradient(circle at 20% 30%, var(--primary-color) 2px, transparent 2px),
+        radial-gradient(circle at 80% 70%, var(--primary-color) 2px, transparent 2px);
+    background-size: 100px 100px;
+    animation: moleculeFloat 20s linear infinite;
+    opacity: 0.1;
+    pointer-events: none;
+}
+
+@keyframes moleculeFloat {
+    0% {
+        background-position: 0 0, 0 0, 0 0;
+    }
+    100% {
+        background-position: 100px 100px, 100px 100px, 100px 100px;
+    }
+}
+
+/* 科学图标动画 */
+.research-icon i {
+    position: relative;
+    animation: iconFloat 3s ease-in-out infinite;
+}
+
+@keyframes iconFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* 实验室设备展示改进 */
+.equipment-section {
+    position: relative;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+    color: var(--white);
+    padding: 6rem 0;
+    overflow: hidden;
+}
+
+.equipment-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.equipment-item {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 2rem;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    transition: transform 0.3s ease;
+}
+
+.equipment-item:hover {
+    transform: translateY(-10px);
+}
+
+/* 数据可视化效果 */
+.data-visualization {
+    position: relative;
+    height: 200px;
+    background: linear-gradient(90deg, 
+        rgba(127, 17, 70, 0.1) 0%,
+        rgba(127, 17, 70, 0.2) 50%,
+        rgba(127, 17, 70, 0.1) 100%
+    );
+    overflow: hidden;
+}
+
+.data-line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--primary-color);
+    animation: dataFlow 3s ease-in-out infinite;
+}
+
+@keyframes dataFlow {
+    0% {
+        transform: scaleX(0);
+        transform-origin: left;
+    }
+    50% {
+        transform: scaleX(1);
+        transform-origin: left;
+    }
+    50.1% {
+        transform-origin: right;
+    }
+    100% {
+        transform: scaleX(0);
+        transform-origin: right;
     }
 }

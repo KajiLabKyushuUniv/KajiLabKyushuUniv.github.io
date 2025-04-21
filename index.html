@@ -64,8 +64,9 @@
     <main>
         <!-- ヒーローセクション -->
         <section class="hero">
-            <div class="hero-bg"></div>
-            <div class="hero-content" data-aos="fade-up">
+            <div class="science-pattern"></div>
+            <div class="molecule-animation"></div>
+            <div class="hero-content" data-aos="fade-right">
                 <h1>加地研究室<span class="hero-title-en">Kaji Research Group</span></h1>
                 <p class="hero-subtitle">Advancing Bioanalytical Technologies</p>
                 <div class="hero-description">
@@ -73,9 +74,12 @@
                     <p class="en-text">We are developing new bioanalytical technologies by using micro/nano spaces fabricated with semiconductor microfabrication techniques as "fields" for measurement and diagnosis of biomolecules and cells.</p>
                 </div>
                 <div class="hero-buttons">
-                    <a href="research.html" class="btn btn-primary">研究内容を見る</a>
-                    <a href="members.html" class="btn btn-secondary">メンバーを見る</a>
+                    <a href="#welcome" class="btn btn-primary">研究室紹介を見る</a>
+                    <a href="#recruitment" class="btn btn-secondary">メンバー募集</a>
                 </div>
+            </div>
+            <div class="hero-bg">
+                <img src="img/cover.jpg" alt="加地研究室の研究室風景" loading="eager">
             </div>
             <div class="scroll-indicator">
                 <div class="mouse">
@@ -89,44 +93,8 @@
             </div>
         </section>
 
-        <!-- 研究領域セクション -->
-        <section class="research-areas">
-            <div class="container">
-                <h2 class="section-title" data-aos="fade-up">研究領域 <span class="en-subtitle">Research Areas</span></h2>
-                <div class="research-grid">
-                    <div class="research-card" data-aos="fade-up" data-aos-delay="100">
-                        <div class="research-icon">
-                            <i class="fas fa-microscope"></i>
-                        </div>
-                        <h3>がん研究 <span class="en-subtitle">Cancer Research</span></h3>
-                        <p>革新的なバイオ分析アプローチによるがんの早期発見および治療法の開発</p>
-                        <p class="en-text">Early detection and treatment of cancer through innovative bioanalytical approaches.</p>
-                        <a href="research.html#cancer" class="learn-more">詳細を見る →</a>
-                    </div>
-                    <div class="research-card" data-aos="fade-up" data-aos-delay="200">
-                        <div class="research-icon">
-                            <i class="fas fa-atom"></i>
-                        </div>
-                        <h3>マイクロ・ナノ技術 <span class="en-subtitle">Micro/Nano Technology</span></h3>
-                        <p>生物学的測定のための先進的なマイクロ・ナノ空間の開発</p>
-                        <p class="en-text">Development of advanced micro/nano spaces for biological measurements.</p>
-                        <a href="research.html#micro-nano" class="learn-more">詳細を見る →</a>
-                    </div>
-                    <div class="research-card" data-aos="fade-up" data-aos-delay="300">
-                        <div class="research-icon">
-                            <i class="fas fa-flask"></i>
-                        </div>
-                        <h3>バイオ分析手法 <span class="en-subtitle">Bioanalytical Methods</span></h3>
-                        <p>生体分子の測定および診断のための新しい方法の創出</p>
-                        <p class="en-text">Creating novel methods for measuring and diagnosing biological molecules.</p>
-                        <a href="research.html#bioanalytical" class="learn-more">詳細を見る →</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <!-- 研究室紹介セクション -->
-        <section class="welcome-section">
+        <section id="welcome" class="welcome-section">
             <div class="container">
                 <div class="welcome-content">
                     <div class="welcome-text" data-aos="fade-right">
@@ -134,11 +102,10 @@
                         <p>加地研究室は、2018年1月に加地教授が着任し、同年4月から学生が配属されてスタートしました。</p>
                         <p>配属される方は、研究に<strong>自主的かつ意欲的に取り組める方</strong>、我こそが分析化学の新しい研究分野を切り拓いていくという<strong>パイオニア精神にあふれた方</strong>を歓迎します。また、国内外を問わず他研究機関との共同研究や留学生の受け入れを積極的に推進していくため、考え方の多様性を受容でき、協調性のある情熱にあふれた<strong>熱い方</strong>を歓迎します。</p>
                         <p class="en-text">Kaji Lab has launched since January 1, 2018. We welcome students and post docs with a pioneering spirit to explore a new field of Analytical Chemistry.</p>
-                        <a href="members.html" class="btn btn-primary">メンバーを見る</a>
                     </div>
                     <div class="welcome-image" data-aos="fade-left">
                         <div class="image-container">
-                            <img src="https://via.placeholder.com/600x400/7f1146/ffffff?text=Lab+Group+Photo" alt="加地研究室のメンバー" loading="lazy">
+                            <img src="img/Group_photo.jpg" alt="加地研究室のメンバー" loading="lazy">
                         </div>
                     </div>
                 </div>
@@ -185,7 +152,82 @@
                     </div>
                 </div>
                 <div class="news-more" data-aos="fade-up">
-                    <a href="news.html" class="btn btn-secondary">すべてのニュースを見る →</a>
+                    <button id="loadMoreNews" class="btn btn-secondary">すべてのニュースを見る →</button>
+                </div>
+                <div id="olderNews" class="news-table hidden">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>日付</th>
+                                <th>タイトル</th>
+                                <th>詳細</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>2024.03.15</td>
+                                <td>卒業式・修了式</td>
+                                <td>辻君（M2）、堤君（B4）が卒業・修了しました。おめでとうございます！</td>
+                            </tr>
+                            <tr>
+                                <td>2024.03.10</td>
+                                <td>追い出しコンパ</td>
+                                <td>卒業・修了する辻君、堤君の追い出しコンパを行いました。</td>
+                            </tr>
+                            <tr>
+                                <td>2024.03.01</td>
+                                <td>新しい研究設備の導入</td>
+                                <td>最新のマイクロ流体デバイス作製装置が導入されました。</td>
+                            </tr>
+                            <tr>
+                                <td>2024.02.20</td>
+                                <td>国際会議での研究発表</td>
+                                <td>山田君（D2）がシンガポールで開催された国際会議MicroTASで口頭発表を行いました。</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- 研究内容セクション -->
+        <section class="research-areas">
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-up">研究内容 <span class="en-subtitle">Research Areas</span></h2>
+                <div class="research-grid">
+                    <div class="research-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="research-icon">
+                            <i class="fas fa-microscope"></i>
+                        </div>
+                        <h3>単一細胞・細菌解析法の開発 <span class="en-subtitle">Development of a single cell and bacterium analysis techniques on a chip</span></h3>
+                        <p>マイクロ・ナノ空間を活用した革新的な単一細胞・細菌解析技術の開発</p>
+                        <p class="en-text">Development of innovative single cell and bacterium analysis techniques using micro/nano spaces.</p>
+                        <div class="paper-cover">
+                            <img src="img/Rtheme1.jpg" alt="単一細胞・細菌解析法の開発" loading="lazy">
+                        </div>
+                    </div>
+                    <div class="research-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="research-icon">
+                            <i class="fas fa-atom"></i>
+                        </div>
+                        <h3>腸内細菌叢研究のためのマイクロ流体デバイス <span class="en-subtitle">Intestinal microflora analysis on a chip</span></h3>
+                        <p>腸内細菌叢の解析と制御のためのマイクロ流体デバイスの開発</p>
+                        <p class="en-text">Development of microfluidic devices for analysis and control of intestinal microflora.</p>
+                        <div class="paper-cover">
+                            <img src="img/Rtheme2.jpg" alt="腸内細菌叢研究" loading="lazy">
+                        </div>
+                    </div>
+                    <div class="research-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="research-icon">
+                            <i class="fas fa-flask"></i>
+                        </div>
+                        <h3>レーザー光を用いた最先端分析技術の研究 <span class="en-subtitle">Advanced analytical techniques using laser light</span></h3>
+                        <p>レーザー光を活用した高感度・高選択的な分析技術の開発</p>
+                        <p class="en-text">Development of highly sensitive and selective analytical techniques using laser light.</p>
+                        <div class="paper-cover">
+                            <img src="img/Rtheme3.jpg" alt="レーザー分析技術" loading="lazy">
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -194,9 +236,9 @@
         <section class="schedule-section">
             <div class="container">
                 <div class="schedule-layout">
-                    <div class="schedule-calendar" data-aos="fade-right">
-                        <h2 class="section-title">年間行事 <span class="en-subtitle">Annual Events</span></h2>
-                        <div class="timeline">
+                    <h2 class="section-title" data-aos="fade-up">年間行事 <span class="en-subtitle">Annual Events</span></h2>
+                    <div class="timeline">
+                        <div class="timeline-items">
                             <div class="timeline-item">
                                 <div class="timeline-dot"></div>
                                 <div class="timeline-date">4月</div>
@@ -209,16 +251,24 @@
                                 <div class="timeline-dot"></div>
                                 <div class="timeline-date">5月</div>
                                 <div class="timeline-content">
-                                    <h3>CHEMINAS、分析化学討論会、新入生歓迎コンパ</h3>
-                                    <p class="en-text">CHEMINAS, Analytical Chemistry Annual Meeting, Welcome party</p>
+                                    <h3>CHEMINAS、分析化学討論会</h3>
+                                    <p class="en-text">CHEMINAS, Analytical Chemistry Annual Meeting</p>
                                 </div>
                             </div>
                             <div class="timeline-item">
                                 <div class="timeline-dot"></div>
                                 <div class="timeline-date">8月</div>
                                 <div class="timeline-content">
-                                    <h3>中間報告会（M2）、テーマ説明会（M1）、大学院入試</h3>
-                                    <p class="en-text">Mid-term report meeting, Theme briefing, Graduate school entrance exams</p>
+                                    <h3>中間報告会（M2）</h3>
+                                    <p class="en-text">Mid-term report meeting</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-date">9月</div>
+                                <div class="timeline-content">
+                                    <h3>分析化学会年会</h3>
+                                    <p class="en-text">Annual Meeting</p>
                                 </div>
                             </div>
                             <div class="timeline-item">
@@ -231,95 +281,62 @@
                             </div>
                             <div class="timeline-item">
                                 <div class="timeline-dot"></div>
+                                <div class="timeline-date">2月</div>
+                                <div class="timeline-content">
+                                    <h3>修士・学士試問会</h3>
+                                    <p class="en-text">Thesis defense</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-dot"></div>
                                 <div class="timeline-date">3月</div>
                                 <div class="timeline-content">
-                                    <h3>化学会年会、追い出しコンパ、卒業式</h3>
-                                    <p class="en-text">Annual Meeting of the Chemical Society, Farewell Party, Graduation Ceremony</p>
+                                    <h3>卒業式</h3>
+                                    <p class="en-text">Graduation Ceremony</p>
                                 </div>
                             </div>
                         </div>
-                        <a href="schedule.html" class="btn btn-secondary">すべての行事を見る</a>
                     </div>
-                    <div class="schedule-gallery" data-aos="fade-left">
-                        <div class="gallery-grid">
-                            <div class="gallery-item">
-                                <img src="https://via.placeholder.com/300x200/2a3f54/ffffff?text=Event+1" alt="研究室イベント" class="gallery-image" loading="lazy">
-                            </div>
-                            <div class="gallery-item">
-                                <img src="https://via.placeholder.com/300x200/2a3f54/ffffff?text=Event+2" alt="研究室イベント" class="gallery-image" loading="lazy">
-                            </div>
-                            <div class="gallery-item">
-                                <img src="https://via.placeholder.com/300x200/2a3f54/ffffff?text=Event+3" alt="研究室イベント" class="gallery-image" loading="lazy">
-                            </div>
-                            <div class="gallery-item">
-                                <img src="https://via.placeholder.com/300x200/2a3f54/ffffff?text=Event+4" alt="研究室イベント" class="gallery-image" loading="lazy">
-                            </div>
+                    <div class="gallery-grid">
+                        <div class="gallery-item">
+                            <img src="img/event1.jpg" alt="研究室イベント" class="gallery-image" loading="lazy">
+                            <div class="gallery-caption">研究室での実験風景1</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="img/event2.jpg" alt="研究室イベント" class="gallery-image" loading="lazy">
+                            <div class="gallery-caption">研究室での実験風景2</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="img/event3.jpg" alt="研究室イベント" class="gallery-image" loading="lazy">
+                            <div class="gallery-caption">研究室での実験風景3</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="img/event4.jpg" alt="研究室イベント" class="gallery-image" loading="lazy">
+                            <div class="gallery-caption">研究室での実験風景4</div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- 研究成果の動的表示セクション -->
-        <section class="publications-highlight">
+        <!-- メンバー募集セクション -->
+        <section id="recruitment" class="recruitment-section">
             <div class="container">
-                <h2 class="section-title" data-aos="fade-up">主な研究成果 <span class="en-subtitle">Key Publications</span></h2>
-                <div class="publications-slider" data-aos="fade-up">
-                    <div class="publication-item">
-                        <div class="publication-icon">
-                            <i class="fas fa-file-alt"></i>
-                        </div>
-                        <h3>Quantitative Evaluation of Interleukin-4 by Immunowall Devices Made of Gelatin Methacryloyl Hydrogel</h3>
-                        <p class="publication-journal">Molecules, 2023</p>
-                        <a href="https://www.mdpi.com/1420-3049/28/12/4635" class="publication-link" target="_blank" rel="noopener noreferrer">論文を読む →</a>
+                <h2 class="section-title" data-aos="fade-up">メンバー募集 <span class="en-subtitle">Recruitment</span></h2>
+                <div class="recruitment-content" data-aos="fade-up">
+                    <div class="recruitment-text">
+                        <h3>大学院生・研究生募集</h3>
+                        <p>加地研究室では、以下のような方々を募集しています：</p>
+                        <ul>
+                            <li>分析化学、電気化学、マイクロ・ナノ技術に興味のある方</li>
+                            <li>新しい研究分野を切り拓きたい方</li>
+                            <li>国際的な研究環境で活躍したい方</li>
+                            <li>自主的に研究を進められる方</li>
+                        </ul>
+                        <p class="en-text">We are looking for motivated graduate students and researchers who are interested in analytical chemistry, electrochemistry, and micro/nano technology.</p>
                     </div>
-                    <div class="publication-item">
-                        <div class="publication-icon">
-                            <i class="fas fa-file-alt"></i>
-                        </div>
-                        <h3>Development of a microfluidic ion current measurement system for a single microplastic detection</h3>
-                        <p class="publication-journal">Journal of Robotics and Mechatronics, 2023</p>
-                        <a href="https://www.fujipress.jp/jrm/rb/" class="publication-link" target="_blank" rel="noopener noreferrer">論文を読む →</a>
-                    </div>
-                    <div class="publication-item">
-                        <div class="publication-icon">
-                            <i class="fas fa-file-alt"></i>
-                        </div>
-                        <h3>Antioxidants encapsulated milk-derived Exosomes for functional food development</h3>
-                        <p class="publication-journal">Analytical Sciences, 2023</p>
-                        <a href="https://link.springer.com/article/10.1007/s44211-023-00278-9" class="publication-link" target="_blank" rel="noopener noreferrer">論文を読む →</a>
-                    </div>
-                </div>
-                <div class="publications-more" data-aos="fade-up">
-                    <a href="publications.html" class="btn btn-primary">すべての論文を見る</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- コラボレーションセクション -->
-        <section class="collaboration-section">
-            <div class="container">
-                <h2 class="section-title" data-aos="fade-up">研究協力・共同研究 <span class="en-subtitle">Collaborations</span></h2>
-                <div class="collaboration-grid" data-aos="fade-up">
-                    <div class="collaboration-item">
-                        <img src="https://via.placeholder.com/150x150/7f1146/ffffff?text=Kyoto+Univ" alt="京都大学" loading="lazy">
-                        <h3>京都大学</h3>
-                        <p>細胞分離技術に関する共同研究</p>
-                    </div>
-                    <div class="collaboration-item">
-                        <img src="https://via.placeholder.com/150x150/7f1146/ffffff?text=Hokkaido+Univ" alt="北海道大学" loading="lazy">
-                        <h3>北海道大学</h3>
-                        <p>微細流体デバイスの開発</p>
-                    </div>
-                    <div class="collaboration-item">
-                        <img src="https://via.placeholder.com/150x150/7f1146/ffffff?text=Nagoya+Univ" alt="名古屋大学" loading="lazy">
-                        <h3>名古屋大学</h3>
-                        <p>バイオセンサー技術</p>
-                    </div>
-                    <div class="collaboration-item">
-                        <img src="https://via.placeholder.com/150x150/7f1146/ffffff?text=Kumamoto+Univ" alt="熊本大学" loading="lazy">
-                        <h3>熊本大学</h3>
-                        <p>マイクロプラスチック検出技術</p>
+                    <div class="recruitment-image" data-aos="fade-left">
+                        <img src="img/lab_equipment.jpg" alt="研究室設備" loading="lazy">
                     </div>
                 </div>
             </div>
