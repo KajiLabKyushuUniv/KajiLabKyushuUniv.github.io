@@ -294,4 +294,45 @@ document.addEventListener('DOMContentLoaded', function() {
             this.textContent = olderNews.classList.contains('hidden') ? 'すべてのニュースを見る →' : 'ニュースを閉じる ←';
         });
     }
+
+    // Year Navigator Functionality
+    const yearLinks = document.querySelectorAll('.year-link');
+    const yearSections = document.querySelectorAll('.year-section');
+    
+    // 監聽滾動事件
+    window.addEventListener('scroll', function() {
+        let currentYear = '';
+        
+        yearSections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (window.scrollY >= sectionTop - 100) {
+                currentYear = section.id;
+            }
+        });
+        
+        // 更新活動年份鏈接
+        yearLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${currentYear}`) {
+                link.classList.add('active');
+            }
+        });
+    });
+    
+    // 平滑滾動
+    yearLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetSection = document.querySelector(targetId);
+            
+            if (targetSection) {
+                window.scrollTo({
+                    top: targetSection.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
 });
